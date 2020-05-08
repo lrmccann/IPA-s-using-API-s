@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 
@@ -9,8 +10,21 @@
     <title>Project 1</title>
   </head>
   <body>
+      <div class = 'container'>
+    <div class="row">
+        <div class="col-md-12">
+        <h6>Search for a city:</h6>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="(ex. Chicago)" aria-label="City weather search" aria-describedby="button-addon2" id="searchWeather">
+            <div class="input-group-append">
+            <button class="btn btn-primary" type="button" id="search">Search</button>
+            </div>
+        </div>
+    </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js" integrity="sha256-H9jAz//QLkDOy/nzE9G4aYijQtkLt9FvGmdUTwBk6gs=" crossorigin="anonymous"></script>
-    <script src='./script.js'></script>
+    <script src='./app.js'></script>
   </body>
 </html>
