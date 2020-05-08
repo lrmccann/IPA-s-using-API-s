@@ -14,7 +14,7 @@ getGeolocation();
 
 function getBreweries(city){
    console.log(city);
-    var queryURL = 'https://api.openbrewerydb.org/breweries?by_city=' + 'New York' ;
+    var queryURL = 'https://api.openbrewerydb.org/breweries?by_city=' + 'Elmhurst' ;
    
     
     $.ajax({
@@ -23,7 +23,7 @@ function getBreweries(city){
     }).then(function(response) {
     console.log(response);
     
-    $('body').append( '<div>' +  response[9].name + '</div>'  + '  <div>' +  response[9].brewery_type + '   </div>' + '  <div>' +  response[9].street + '   </div>');
+    $('body').append( '<div>' +  response[0].name + '</div>'  + '  <div>' +  response[0].brewery_type + '   </div>' + '  <div>' +  response[0].street + '   </div>');
     
     });
 };
