@@ -14,7 +14,7 @@ getGeolocation();
 
 function getBreweries(city){
    console.log(city);
-    var queryURL = 'https://api.openbrewerydb.org/breweries?by_city=' + 'Elmhurst' ;
+    var queryURL = 'https://api.openbrewerydb.org/breweries?by_city=' + city ;
    
     
     $.ajax({
