@@ -13,9 +13,7 @@ getGeolocation();
     }).then(function(response){
       console.log(response);
       getBreweries(response.city);
-      $('body').append(response.city);
-      $('body').append(response.latitude);
-      $('body').append(response.longitude);
+    
 
         mapboxgl.accessToken = 'pk.eyJ1IjoiY2FybG9zcmVtYTIiLCJhIjoiY2s5em5zZjB2MGN2bTNncDYyM2Ruc2FyZSJ9.piNzfWJ9-dRIsVM3le57gg';
         var map = new mapboxgl.Map({
@@ -39,13 +37,21 @@ function getBreweries(city){
     method: "GET"
     }).then(function(response) {
     console.log(response);
-    
-    $('body').append( '<div>' +  response[0].name + '</div>'  + '  <div>' +  response[0].brewery_type + '   </div>' + '  <div>' +  response[0].street + '   </div>');
-    
+
+    if( response.length === 0){
+      alert('please enter a different city, there are no breweries in your area');
+    }
+    for ( i = 0; i < response.length; i++ ){
+    $('body').append( `<a href ='#' ><div class = 'name'> ${response[i].name} </div></a>  <div class = 'brewery_type'>   ${response[i].brewery_type}   </div>  <div class = 'street'>  ${response[i].street} </div>`);
+    }
     });
 };
 
 $('#search').on('click', function(){
+  $ ('.name').empty();
+    $('.brewery_type').empty();
+    $('.street').empty();
+
     var city = $('#searchBrewery').val();
     console.log(city);
     getBreweries(city.trim());
