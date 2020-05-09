@@ -36,6 +36,10 @@ function getBreweries(city){
     url: queryURL,
     method: "GET"
     }).then(function(response) {
+    $ ('.name').empty();
+    $('.brewery_type').empty();
+    $('.street').empty();
+
     console.log(response);
 
     if( response.length === 0){
@@ -48,10 +52,6 @@ function getBreweries(city){
 };
 
 $('#search').on('click', function(){
-  $ ('.name').empty();
-    $('.brewery_type').empty();
-    $('.street').empty();
-
     var city = $('#searchBrewery').val();
     console.log(city);
     getBreweries(city.trim());
