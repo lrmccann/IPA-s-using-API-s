@@ -40,6 +40,21 @@ function getBreweries(city){
     });
 };
 
+$('#search').on('click', function(){
+    var city = $('#searchBrewery').val();
+    console.log(city);
+    getBreweries(city.trim());
+})
+
+$('#searchBrewery').keypress(function (e) {
+    if (e.which == 13) {
+        var city = $('#searchBrewery').val();
+        console.log(city);
+        getBreweries(city.trim());
+      return false;
+    }
+  });
+
 
 
 
