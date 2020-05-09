@@ -28,4 +28,28 @@ function getBreweries(city){
     });
 };
 
+getRestaurant();
+    function getRestaurant(){
+        $.ajax({
+        url: 'https://opentable.herokuapp.com/api/restaurants',
+        method: 'GET'
+
+    }).then(function(response){
+      console.log(response);
+    
+    });
+};
+
+
+mapboxgl.accessToken = 'pk.eyJ1IjoiY2FybG9zcmVtYTIiLCJhIjoiY2s5em5zZjB2MGN2bTNncDYyM2Ruc2FyZSJ9.piNzfWJ9-dRIsVM3le57gg';
+var map = new mapboxgl.Map({
+container: 'map', // container id
+style: 'mapbox://styles/mapbox/streets-v11',
+center: [-87.64,41.88], // starting position
+zoom: 13 // starting zoom
+});
+ // Add zoom and rotation controls to the map.
+map.addControl(new mapboxgl.NavigationControl());
+
+
 });
