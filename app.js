@@ -13,6 +13,7 @@ getGeolocation();
     }).then(function(response){
       console.log(response);
       getBreweries(response.city);
+      getaddressLocation(response.city,response.latitude, response.longitude);
       $('body').append(response.city);
       $('body').append(response.latitude);
       $('body').append(response.longitude);
@@ -31,7 +32,7 @@ getGeolocation();
 
 function getBreweries(city){
    console.log(city);
-    var queryURL = 'https://api.openbrewerydb.org/breweries?by_city=' + city ;
+    var queryURL = 'https://api.openbrewerydb.org/breweries?by_city=' + 'Chicago' ;
    
     
     $.ajax({
@@ -45,6 +46,7 @@ function getBreweries(city){
     });
 };
 
+<<<<<<< Updated upstream
 $('#search').on('click', function(){
     var city = $('#searchBrewery').val();
     console.log(city);
@@ -60,8 +62,34 @@ $('#searchBrewery').keypress(function (e) {
     }
   });
 
+=======
+function getaddressLocation(nameBrewery, lat,long){
+    console.log(nameBrewery);
+    console.log(lat);
+    console.log(long);
+     var queryURL = 'https://api.mapbox.com/geocoding/v5/mapbox.places/'+nameBrewery+'.json?proximity=-87.65,41.85&access_token=pk.eyJ1IjoiY2FybG9zcmVtYTIiLCJhIjoiY2s5em5zZjB2MGN2bTNncDYyM2Ruc2FyZSJ9.piNzfWJ9-dRIsVM3le57gg';
+    
+     $.ajax({
+     url: queryURL,
+     method: "GET"
+     }).then(function(response) {
+     console.log(response);
+     
+     $('body').append( '<div>' +  response.features[0].geometry.coordinates[0] + '</div>'  + '  <div>' +  response.features[0].geometry.coordinates[1]  + '   </div>' );
+     mapboxgl.accessToken = 'pk.eyJ1IjoiY2FybG9zcmVtYTIiLCJhIjoiY2s5em5zZjB2MGN2bTNncDYyM2Ruc2FyZSJ9.piNzfWJ9-dRIsVM3le57gg';
+>>>>>>> Stashed changes
 
+var map = new mapboxgl.Map({
+container: 'map', // container id
+style: 'mapbox://styles/mapbox/streets-v11',
+center: [response.features[0].geometry.coordinates[0] ,response.features[0].geometry.coordinates[1]], // starting position
+zoom: 13 // starting zoom
+});
+ // Add zoom and rotation controls to the map.
+map.addControl(new mapboxgl.NavigationControl());
+     });
 
+    };
 
 
 });
