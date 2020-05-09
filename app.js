@@ -9,6 +9,18 @@ getGeolocation();
       console.log(response);
       getBreweries(response.city);
       $('body').append(response.city);
+      $('body').append(response.latitude);
+      $('body').append(response.longitude);
+
+mapboxgl.accessToken = 'pk.eyJ1IjoiY2FybG9zcmVtYTIiLCJhIjoiY2s5em5zZjB2MGN2bTNncDYyM2Ruc2FyZSJ9.piNzfWJ9-dRIsVM3le57gg';
+var map = new mapboxgl.Map({
+container: 'map', // container id
+style: 'mapbox://styles/mapbox/streets-v11',
+center: [response.longitude,response.latitude], // starting position
+zoom: 9 // starting zoom
+});
+ // Add zoom and rotation controls to the map.
+map.addControl(new mapboxgl.NavigationControl());
     });
 };
 
@@ -27,5 +39,9 @@ function getBreweries(city){
     
     });
 };
+
+
+
+
 
 });
