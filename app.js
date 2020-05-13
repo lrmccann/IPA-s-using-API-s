@@ -1,7 +1,6 @@
 $(document).ready(function () {
     getGeolocation();
-    //pushing again 
-    //hello
+
     var coords = []
     console.log(coords);
     function getGeolocation() {
@@ -16,8 +15,8 @@ $(document).ready(function () {
             }
         }).then(function (response) {
             //console.log(response);
-            getBreweries(response.city);
-
+            var type = [];
+            getBreweries(response.city, type);
 
             mapboxgl.accessToken = 'pk.eyJ1IjoiY2FybG9zcmVtYTIiLCJhIjoiY2s5em5zZjB2MGN2bTNncDYyM2Ruc2FyZSJ9.piNzfWJ9-dRIsVM3le57gg';
             var map = new mapboxgl.Map({
@@ -31,11 +30,21 @@ $(document).ready(function () {
         });
     };
 
-    function getBreweries(city) {
+    function getBreweries(city, type) {
         console.log(city);
-        var queryURL = 'https://api.openbrewerydb.org/breweries?by_city=' + city;
-
-
+        var queryURL = ""
+        if(type.length === 0){
+            queryURL = 'https://api.openbrewerydb.org/breweries?by_city=' + city;
+        } else if(type.length === 1){
+            queryURL = 'https://api.openbrewerydb.org/breweries?by_city=' + city + '&by_tag=' +type[0];
+        } else{
+            var tys = '';
+            for(ty in types){
+                tys += ty + ','
+            }
+            queryURL = 'https://api.openbrewerydb.org/breweries?by_city=' + city + '&by_tags=' + tys;;
+        }
+        
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -48,10 +57,6 @@ $(document).ready(function () {
 
             if (response.length === 0) {
                 $("#myModal").modal();
-
-
-
-
             }
             var i =0;
             while (i < response.length && i < 10) {
@@ -67,14 +72,6 @@ $(document).ready(function () {
             }
         });
     };
-
-    $('#search').on('click', function () {
-        var city = $('#searchBrewery').val();
-        console.log(city);
-        getBreweries(city.trim());
-        //$("#myModal").modal();
-    });
-
 
     function getaddressLocation(nameBrewery, lat, long) {
         console.log(nameBrewery);
@@ -105,9 +102,37 @@ $(document).ready(function () {
     $('#searchBrewery').keypress(function (e) {
         if (e.which == 13) {
             var city = $('#searchBrewery').val();
-            console.log(city);
-            getBreweries(city.trim());
+            var check = $('input:checked');
+            typeList = [];
+            if(check.length === 0){
+                getBreweries(city.trim(), typeList);
+            } else{
+                typeList = checked();
+                getBreweries(city.trim(), typeList);
+            } 
             return false;
         };
     });
+
+    $('#search').on('click', function () {
+        var city = $('#searchBrewery').val();
+        var check = $('input:checked');
+        typeList = [];
+        if(check.length === 0){
+            getBreweries(city.trim(), typeList);
+        } else{
+            typeList = checked();
+            getBreweries(city.trim(), typeList);
+        } 
+    });
+    
+    function checked(){
+        var checked = $('input:checked');
+        var typeList = [];
+        $.each(checked, function(){
+            var type = $(this).val();
+            typeList.push(type);
+        });
+        return typeList;
+    }
 });
