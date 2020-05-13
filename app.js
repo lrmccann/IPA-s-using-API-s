@@ -1,5 +1,7 @@
 $(document).ready(function () {
     getGeolocation();
+    //pushing again 
+    //hello
     var coords = []
     console.log(coords);
     function getGeolocation() {
