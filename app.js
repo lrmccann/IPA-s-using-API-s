@@ -60,7 +60,7 @@ $(document).ready(function () {
             }
             var i =0;
             while (i < response.length && i < 10) {
-                $('body').append(`<a href ='#' ><div class = 'name ${i}'> ${response[i].name} </div></a>  <div class = 'brewery_type'>   ${response[i].brewery_type}   </div>  <div class = 'street'>  ${response[i].street} </div>`);
+                $('emptydiv').append(`<a href ='#' ><div class = 'name ${i}'> ${response[i].name} </div></a>  <div class = 'brewery_type'>   ${response[i].brewery_type}   </div>  <div class = 'street'>  ${response[i].street} </div>`);
 
                 var newCoord = {
                     lat: response[i].latitude,
