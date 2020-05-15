@@ -1,7 +1,5 @@
 $(document).ready(function () {
     getGeolocation();
-    //pushing again 
-    //hello
     var coords = []
     console.log(coords);
     function getGeolocation() {
@@ -17,7 +15,8 @@ $(document).ready(function () {
         }).then(function (response) {
             //console.log(response);
             getBreweries(response.city);
-
+            
+    
 
             mapboxgl.accessToken = 'pk.eyJ1IjoiY2FybG9zcmVtYTIiLCJhIjoiY2s5em5zZjB2MGN2bTNncDYyM2Ruc2FyZSJ9.piNzfWJ9-dRIsVM3le57gg';
             var map = new mapboxgl.Map({
@@ -32,7 +31,7 @@ $(document).ready(function () {
     };
 
     function getBreweries(city) {
-        console.log(city);
+        //console.log(city);
         var queryURL = 'https://api.openbrewerydb.org/breweries?by_city=' + city;
 
 
@@ -43,9 +42,10 @@ $(document).ready(function () {
             $('.name').empty();
             $('.brewery_type').empty();
             $('.street').empty();
+            $('.favoriteButton').empty();
 
-            console.log(response);
 
+           // console.log(response);
             if (response.length === 0) {
                 $("#myModal").modal();
 
@@ -53,9 +53,9 @@ $(document).ready(function () {
 
 
             }
-            var i =0;
+            var i = 0;
             while (i < response.length && i < 10) {
-                $('body').append(`<a href ='#' ><div class = 'name ${i}'> ${response[i].name} </div></a>  <div class = 'brewery_type'>   ${response[i].brewery_type}   </div>  <div class = 'street'>  ${response[i].street} </div>`);
+                $('.dynamicAppend').append(`<a href ='#' ><div class = 'name ${i}'> ${response[i].name} </div></a> <div class = 'brewery_type'>   ${response[i].brewery_type}   </div> <div class = 'street'>  ${response[i].street} </div> <div class = "favoriteButton btn btn-primary"> Add To Wish List</div>`);
 
                 var newCoord = {
                     lat: response[i].latitude,
@@ -67,14 +67,36 @@ $(document).ready(function () {
             }
         });
     };
+    var wishes = []
+    $(document).on("click", '.favoriteButton', function(){
+        var previousElements = $(this).prevAll();
+        var wish = $(previousElements[2]).children().first().text();
+         console.log(wish);
+         (wishes).push(wish);
+         localStorage.setItem('wish', JSON.stringify(wishes));
+          console.log(wishes);
+         });
 
     $('#search').on('click', function () {
         var city = $('#searchBrewery').val();
         console.log(city);
         getBreweries(city.trim());
-        //$("#myModal").modal();
+        //(favorites).push(city)
+        //console.log(favorites);
+       
     });
-
+    
+    var wishList = function (){
+        var yourWishes = JSON.parse(localStorage.getItem("wish"));
+        if (yourWishes!== null){
+            wishes=yourWishes;
+            for (var i = 0;i < yourWishes.length; i++){
+                $(".dynamicAppend").append(`<li class='list-group-item btn' id='button' >${yourWishes[i]}</li>`);
+            }
+        }
+    }
+    wishList();
+   
 
     function getaddressLocation(nameBrewery, lat, long) {
         console.log(nameBrewery);
@@ -110,4 +132,13 @@ $(document).ready(function () {
             return false;
         };
     });
+ 
 });
+
+// $('#toDoList').on("click", '#delete', function(){
+//   $(this).closest(".fullItem").remove();
+//   var item = $(this).closest(".fullItem").find("input[id='listItem'").val();
+//   console.log(item);
+//   removeFromArray(item);
+// });
+
