@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' /> 
     <link rel="stylesheet" href="style.css">
-
 
     <title>Project 1</title>
   </head>
@@ -15,55 +13,214 @@
     <!--Header-->
     <header>
       <div class="overlay">
-        <h1>IPA's using API's</h1>
-        <h3>#1 site for finding local breweries</h3>
-        <p>To get started simply search below</p>
+          <img src="https://i.ibb.co/k2RGM5h/Beers-Header.png" alt="Beers-Header" class="image">
+            <div class="headertext">
+                <h1>IPA's using API's</h1>
+                <h3>#1 site for finding local breweries</h3>
+                <p>To get started simply search below</p>
+        </div>
       </div>
     </header>
 
   <div class="whole">
       <div class = 'container'>
-    <div class="row">
-        <div class="col-md-12">
-        <h6>Search for a city:</h6>
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="(ex. Chicago)" aria-label="City weather search" aria-describedby="button-addon2" id="searchBrewery">
-            <div class="input-group-append">
-            <button class="btn btn-primary" type="button" id="search">Search</button>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-      <!-- Modal -->
-      <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-        
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Error</h4>
-            </div>
-            <div class="modal-body">
-              <p>Please enter a different city. There are no breweries in your area.</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <div class="row-md-12">
+            <div class="col-md-12 ">
+              <h6 class="searchtext">Search for a city:</h6>
+              <!--Buttons-->
+              <div class="input-group mb-3">
+
+
+                <div class="pull-left bar">
+                    <input type="text" class="form-control" placeholder="(ex. Chicago)" aria-label="City weather search" aria-describedby="button-addon2" id="searchBrewery">  
+                  <div class="input-group-append">
+                     <button class="btn btn-primary" type="button" id="search">Search</button> 
+                  </div>  
+                </div> 
+                  
+                
+                
+              <div class="groupbtn">
+                <div class="btn-group btn-group-toggle type" data-toggle="buttons">
+                    <label class="btn btn-primary typeOptions" id="patio">
+                        <input type="checkbox" name="options" autocomplete="off" id="check" value="patio"> Patio
+                    </label>
+                    <label class="btn btn-primary typeOptions" id="dog">
+                        <input type="checkbox" name="options" autocomplete="off" id="check" value="Dog-friendly"> Dog-friendly
+                    </label>
+                    <label class="btn btn-primary typeOptions" id="food">
+                        <input type="checkbox" name="options" autocomplete="off" id="check" value="food-service"> Food
+                    </label>
+                </div>
+              </div>
             </div>
           </div>
-          
+        </div>
+            <div class='row'>
+              <div class="col-md-6">
+                <div class="srcresults"><p class="resultstext">Results</p></div>
+                    <div class="emptydiv"></div>
+              </div>
+                <div class="col-md-6">
+                      <div id='map' style='width: 500px; height: 500px;'></div>
+              </div>
+                </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class ="dynamicAppend">
 
+
+          <!-- Modal -->
+          <div class="container">
+            <div class="modal fade" id="myModal" role="dialog">
+              <div class="modal-dialog">
+            
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Error</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>Please enter a different city. There are no breweries in your area.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--End Modal content-->
+        </div>
       </div>
-    </div>
-    
+      <!--FOOOOOTTERR-->
+              <div class="row">
+
+          <footer class="page-footer font-small mdb-color lighten-3 pt-4 foot">
+
+            <!-- Footer Links -->
+            <div class="container text-center text-md-left">
+
+              <!-- Grid row -->
+              <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
+
+                  <!-- Content -->
+                  <h5 class="font-weight-bold text-uppercase mb-4">Footer Content</h5>
+                  <p>Using two different API's we are able to provide the user with different breweries in their area.</p>
+                </div>
+                <!-- Grid column -->
+
+                <hr class="clearfix w-100 d-md-none">
+
+                <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1">
+
+                  <!-- Links -->
+                  <h5 class="font-weight-bold text-uppercase mb-4">MEMBERS</h5>
+
+                  <ul class="list-unstyled">
+                    <li>
+                      <p>
+                        Alex Curtis
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        Carlos Reyes
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        Logan McCann
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        Mariya Kirichenko
+                      </p>
+                    </li>
+                  </ul>
+
+                </div>
+                <!-- Grid column -->
+
+                <hr class="clearfix w-100 d-md-none">
+
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
+
+                  <!-- Contact details -->
+                  <h5 class="font-weight-bold text-uppercase mb-4">Address</h5>
+
+                  <ul class="list-unstyled">
+                    <li>
+                      <p>
+                        <i class="fas fa-home mr-3"></i> Chicago, IL, 60605</p>
+                    </li>
+                    <li>
+                      <p>
+                        <i class="fas fa-envelope mr-3"></i> abc.gmail..com</p>
+                    </li>
+                    <li>
+                      <p>
+                        <i class="fas fa-phone mr-3"></i> #(###)-###-###</p>
+                    </li>
+                    <li>
+                      <p>
+                        <i class="fas fa-print mr-3"></i> #(###)-###-###</p>
+                    </li>
+                  </ul>
+
+                </div>
+                <!-- Grid column -->
+
+                <hr class="clearfix w-100 d-md-none">
+
+                <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 text-center mx-auto my-4">
+
+                  <!-- Social buttons -->
+                  <h5 class="font-weight-bold text-uppercase mb-4">Follow Us</h5>
+
+                  <!-- Facebook -->
+                  <a type="button" class="btn-floating btn-fb">
+                    <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <!-- Twitter -->
+                  <a type="button" class="btn-floating btn-tw">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                  <!-- Google +-->
+                  <a type="button" class="btn-floating btn-gplus">
+                    <i class="fab fa-google-plus-g"></i>
+                  </a>
+                  <!-- Dribbble -->
+                  <a type="button" class="btn-floating btn-dribbble">
+                    <i class="fab fa-dribbble"></i>
+                  </a>
+
+                </div>
+                <!-- Grid column -->
+
+              </div>
+              <!-- Grid row -->
+
+            </div>
+            <!-- Footer Links -->
+          </footer>
+        </div>
+      </div>
+            <!-- END FOOOOOOTTTEERRR-->
     </body>
     </html>
-    </div>
-    <div id='map' style='width: 400px; height: 300px;'></div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js" integrity="sha256-H9jAz//QLkDOy/nzE9G4aYijQtkLt9FvGmdUTwBk6gs=" crossorigin="anonymous"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
