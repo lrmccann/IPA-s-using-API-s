@@ -18,57 +18,55 @@
                 <h1>IPA's using API's</h1>
                 <h3>#1 site for finding local breweries</h3>
                 <p>To get started simply search below</p>
-        </div>
+            </div>
       </div>
     </header>
+    <!-- End Header-->
 
-  <div class="whole">
-      <div class = 'container'>
+    <!--Search Bar-->
+    <div class="container searchbar">
         <div class="row-md-12">
             <div class="col-md-12 ">
-              <h6 class="searchtext">Search for a city:</h6>
-              <!--Buttons-->
-              <div class="input-group mb-3">
-
-
+                <h6 class="searchtext">Search for a city:</h6>
                 <div class="pull-left bar">
-                    <input type="text" class="form-control" placeholder="(ex. Chicago)" aria-label="City weather search" aria-describedby="button-addon2" id="searchBrewery">  
-                  <div class="input-group-append">
-                     <button class="btn btn-primary" type="button" id="search">Search</button> 
-                  </div>  
-                </div> 
-                  
-                
-                
-              <div class="groupbtn">
-                <div class="btn-group btn-group-toggle type" data-toggle="buttons">
-                    <label class="btn btn-primary typeOptions" id="patio">
-                        <input type="checkbox" name="options" autocomplete="off" id="check" value="patio"> Patio
-                    </label>
-                    <label class="btn btn-primary typeOptions" id="dog">
-                        <input type="checkbox" name="options" autocomplete="off" id="check" value="Dog-friendly"> Dog-friendly
-                    </label>
-                    <label class="btn btn-primary typeOptions" id="food">
-                        <input type="checkbox" name="options" autocomplete="off" id="check" value="food-service"> Food
-                    </label>
-                </div>
-              </div>
+                    <input type="text" class="form-control srcbox" placeholder="(ex. Chicago)" aria-label="City weather search" aria-describedby="button-addon2" id="searchBrewery">  
+                    <button class="btn btn-primary" type="button" id="search">Search</button> 
+                </div>  
             </div>
+        </div>
+      </div>
+    <!-- End Search Bar-->   
+              
+           <!-- Check Buttons--> 
+       <div class="container chkbtn">  
+          <div class="input-group mb-3">
+              <div class="btn-group btn-group-toggle type" data-toggle="buttons">
+                <label class="btn btn-primary typeOptions" id="patio">
+                    <input type="checkbox" name="options" autocomplete="off" id="check" value="patio"> Patio
+                </label>
+                <label class="btn btn-primary typeOptions" id="dog">
+                    <input type="checkbox" name="options" autocomplete="off" id="check" value="Dog-friendly"> Dog-friendly
+                </label>
+                <label class="btn btn-primary typeOptions" id="food">
+                    <input type="checkbox" name="options" autocomplete="off" id="check" value="food-service"> Food
+                </label>
+              </div>
           </div>
         </div>
+        <!-- End Check Buttons -->
+        <!-- Results Bar & Map-->
+        <div class="container rsltcont">
             <div class='row'>
               <div class="col-md-6">
                 <div class="srcresults"><p class="resultstext">Results</p></div>
                     <div class="emptydiv"></div>
               </div>
                 <div class="col-md-6">
-                      <div id='map' style='width: 500px; height: 500px;'></div>
-              </div>
+                    <div id='map' style='width: 500px; height: 500px;'></div>
                 </div>
             </div>
           </div>
-        </div>
-      </div>
+            <!-- End Result Bar-->
 
 
           <!-- Modal -->
@@ -93,132 +91,121 @@
             </div>
           </div>
           <!--End Modal content-->
-        </div>
+
+
+<!-- Footer -->
+<footer class="page-footer font-small mdb-color lighten-3 pt-4 ">
+
+  <!-- Footer Links -->
+  <div class="container text-center text-md-left">
+
+    <!-- Grid row -->
+    <div class="row ">
+
+      <!-- Grid column -->
+      <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
+
+        <!-- Content -->
+        <h5 class="font-weight-bold text-uppercase mb-4">About Us</h5>
+        <p>orem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae feugiat lacus. Cras nisl ex, gravida nec dignissim et, vehicula ac neque. Suspendisse vitae fermentum purus. Morbi at est dui. Aliquam hendrerit venenatis nibh, sed interdum metus pretium eu.</p>
+
       </div>
-      <!--FOOOOOTTERR-->
-              <div class="row">
+      <!-- Grid column -->
 
-          <footer class="page-footer font-small mdb-color lighten-3 pt-4 foot">
+      <hr class="clearfix w-100 d-md-none">
 
-            <!-- Footer Links -->
-            <div class="container text-center text-md-left">
+      <!-- Grid column -->
+      <div class="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1 ">
 
-              <!-- Grid row -->
-              <div class="row">
+        <!-- Links -->
+        <h5 class="font-weight-bold text-uppercase mb-4">Members</h5>
 
-                <!-- Grid column -->
-                <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
+        <ul class="list-unstyled">
+          <li>
+            <p>
+              Alex
+            </p>
+          </li>
+          <li>
+            <p>
+              Carlos
+            </p>
+          </li>
+          <li>
+            <p>
+              Mariyah
+            </p>
+          </li>
+          <li>
+            <p>
+              Logan
+            </p>
+          </li>
+        </ul>
 
-                  <!-- Content -->
-                  <h5 class="font-weight-bold text-uppercase mb-4">Footer Content</h5>
-                  <p>Using two different API's we are able to provide the user with different breweries in their area.</p>
-                </div>
-                <!-- Grid column -->
-
-                <hr class="clearfix w-100 d-md-none">
-
-                <!-- Grid column -->
-                <div class="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1">
-
-                  <!-- Links -->
-                  <h5 class="font-weight-bold text-uppercase mb-4">MEMBERS</h5>
-
-                  <ul class="list-unstyled">
-                    <li>
-                      <p>
-                        Alex Curtis
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Carlos Reyes
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Logan McCann
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Mariya Kirichenko
-                      </p>
-                    </li>
-                  </ul>
-
-                </div>
-                <!-- Grid column -->
-
-                <hr class="clearfix w-100 d-md-none">
-
-                <!-- Grid column -->
-                <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
-
-                  <!-- Contact details -->
-                  <h5 class="font-weight-bold text-uppercase mb-4">Address</h5>
-
-                  <ul class="list-unstyled">
-                    <li>
-                      <p>
-                        <i class="fas fa-home mr-3"></i> Chicago, IL, 60605</p>
-                    </li>
-                    <li>
-                      <p>
-                        <i class="fas fa-envelope mr-3"></i> abc.gmail..com</p>
-                    </li>
-                    <li>
-                      <p>
-                        <i class="fas fa-phone mr-3"></i> #(###)-###-###</p>
-                    </li>
-                    <li>
-                      <p>
-                        <i class="fas fa-print mr-3"></i> #(###)-###-###</p>
-                    </li>
-                  </ul>
-
-                </div>
-                <!-- Grid column -->
-
-                <hr class="clearfix w-100 d-md-none">
-
-                <!-- Grid column -->
-                <div class="col-md-2 col-lg-2 text-center mx-auto my-4">
-
-                  <!-- Social buttons -->
-                  <h5 class="font-weight-bold text-uppercase mb-4">Follow Us</h5>
-
-                  <!-- Facebook -->
-                  <a type="button" class="btn-floating btn-fb">
-                    <i class="fab fa-facebook-f"></i>
-                  </a>
-                  <!-- Twitter -->
-                  <a type="button" class="btn-floating btn-tw">
-                    <i class="fab fa-twitter"></i>
-                  </a>
-                  <!-- Google +-->
-                  <a type="button" class="btn-floating btn-gplus">
-                    <i class="fab fa-google-plus-g"></i>
-                  </a>
-                  <!-- Dribbble -->
-                  <a type="button" class="btn-floating btn-dribbble">
-                    <i class="fab fa-dribbble"></i>
-                  </a>
-
-                </div>
-                <!-- Grid column -->
-
-              </div>
-              <!-- Grid row -->
-
-            </div>
-            <!-- Footer Links -->
-          </footer>
-        </div>
       </div>
-            <!-- END FOOOOOOTTTEERRR-->
-    </body>
-    </html>
+      <!-- Grid column -->
 
+      <hr class="clearfix w-100 d-md-none">
+
+      <!-- Grid column -->
+      <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
+
+        <!-- Contact details -->
+        <h5 class="font-weight-bold text-uppercase mb-4">Address</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <p> Chicago, IL</p>
+          </li>
+          <li>
+            <p>NorthWestern </p>
+          </li>
+          <li>
+            <p> #-(###)-###-####</p>
+          </li>
+          <li>
+            <p> #-###-####</p>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none">
+
+      <!-- Grid column -->
+      <div class="col-md-2 col-lg-2 text-center mx-auto my-4">
+
+        <!-- Social buttons -->
+        <h5 class="font-weight-bold text-uppercase mb-4">Follow Us</h5>
+
+        <!-- Facebook -->
+        <a type="button" class="btn-floating btn-fb">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <!-- Twitter -->
+        <a type="button" class="btn-floating btn-tw">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <!-- Google +-->
+        <a type="button" class="btn-floating btn-gplus">
+          <i class="fab fa-google-plus-g"></i>
+        </a>
+        <!-- Dribbble -->
+        <a type="button" class="btn-floating btn-dribbble">
+          <i class="fab fa-dribbble"></i>
+        </a>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+</footer>
+<!--end footer-->
 
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
