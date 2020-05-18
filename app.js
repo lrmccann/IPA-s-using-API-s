@@ -141,4 +141,15 @@ $(document).ready(function () {
         var addy = $(this).closest('.resultItem').find("div[id='addy'").text();
         getaddressLocation(addy, city);
 });
+
+$('.listSlider').on('click',function(){
+    $('.emptydiv').html("");
+    var checked = $('input:checked');
+    if(checked.length === 0){
+        getaddressLocation("", city);
+        getBreweries(city);
+    } else{
+        wishList();
+    } 
+});
 });

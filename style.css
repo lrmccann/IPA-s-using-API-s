@@ -74,7 +74,6 @@
  	}
 
  .whole{
- 	background-color:;
  	float: left;
  	margin-right: 500px;
  	padding-top: 25px;
@@ -83,6 +82,78 @@
  .searchtext{
  	font-size: 25px;
  }
+
+ /* Unit measure switch formatting is next 7 formatting sections*/
+.switch {
+  height: 33px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  text-align: center;
+  font-size: 20px;
+  width: 55%;
+  margin-left: 42px;
+  color: white;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(172, 130, 76);
+  -webkit-transition: .7s;
+  transition: .7s;
+  border-radius: 5px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "Results";
+  padding-bottom: 30px;
+  height: 28px;
+  width: 50%;
+  left: 4px;
+  bottom: 3px;
+  background-color: burlywood;
+  border-color: black;
+  border-style: solid;
+  border-width: 2px;
+  -webkit-transition: .7s;
+  transition: .7s;
+  border-radius: 5px;
+}
+
+.slider:hover:before{
+	background-color: rgb(143, 89, 18);
+}
+
+.slider:focus{
+	background-color: rgb(143, 89, 18);
+}
+
+input:checked + .slider {
+  background-color: rgb(172, 130, 76);
+}
+
+input:checked + .slider:before {
+  background-color: burlywood;
+  content: "Wish List";
+  -webkit-transform: translateX(96%);
+  -ms-transform: translateX(96%);
+  transform: translateX(96%);
+}
+
+input:checked + .slider:hover:before{
+	background-color: rgb(143, 89, 18);
+}
 
  .results{
  	margin-top: 20px;
