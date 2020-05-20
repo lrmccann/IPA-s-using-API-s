@@ -27,7 +27,7 @@ $(document).ready(function () {
                 center: [response.longitude, response.latitude], // starting position
                 zoom: 9 // starting zoom
             });
-            
+
             map.addControl(new mapboxgl.NavigationControl());
         });
     };
@@ -56,20 +56,23 @@ $(document).ready(function () {
                 $('.emptydiv').append(`<div class="resultItem" id="result" ><a href='#${response[i].name}' id='${response[i].name}' ><div class = 'name ${i}'> ${response[i].name} </div></a> <div class = 'brewery_type'>   ${response[i].brewery_type}   </div> <div class = 'street'>  ${response[i].street} </div> <div class = "favoriteButton btn btn-primary"> Add To Wish List</div></div>`);
 
                 i++
-               
+
+
             }
         });
     };
-    
+
     function getaddressLocation(addy, city) {
-     
-        var queryURL = 'https://api.mapbox.com/geocoding/v5/mapbox.places/'+addy+' '+city+'.json?country=US&access_token=pk.eyJ1IjoiY2FybG9zcmVtYTIiLCJhIjoiY2s5em5zZjB2MGN2bTNncDYyM2Ruc2FyZSJ9.piNzfWJ9-dRIsVM3le57gg';
+
+        var queryURL = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + addy + ' ' + city + '.json?country=US&access_token=pk.eyJ1IjoiY2FybG9zcmVtYTIiLCJhIjoiY2s5em5zZjB2MGN2bTNncDYyM2Ruc2FyZSJ9.piNzfWJ9-dRIsVM3le57gg';
+
 
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            
+
+
             mapboxgl.accessToken = 'pk.eyJ1IjoiY2FybG9zcmVtYTIiLCJhIjoiY2s5em5zZjB2MGN2bTNncDYyM2Ruc2FyZSJ9.piNzfWJ9-dRIsVM3le57gg';
 
             var map = new mapboxgl.Map({
@@ -85,6 +88,40 @@ $(document).ready(function () {
                 .addTo(map);
         });
     };
+    var wishes = [];
+
+    $(document).on("click", '.favoriteButton', function () {
+        var previousElements = $(this).prevAll();
+        console.log(previousElements);
+        var saveCity = city;
+        var wish = $(previousElements[2]).children().first().text();
+        var addy = previousElements[0].innerText;
+        wishes.push({
+            myCity: saveCity,
+            address: addy,
+            brewery: wish
+        })
+        localStorage.setItem('wish', JSON.stringify(wishes));
+        console.log(wishes);
+    });
+    var wishList = function () {
+        console.log('wishList');
+        var getWishes = JSON.parse(localStorage.getItem("wish"));
+
+        if (getWishes !== null) {
+            wishes = getWishes;
+            for (wish of wishes) {
+                $(".emptydiv").append(`<div class="resultItem" id="result" ><a href ='#${wish.brewery}'class= "name" id='${wish.brewery}'><div>${wish.brewery}</div></a><div class = 'brewery_city'>${wish.myCity}</div><div class = 'street'>${wish.address}</div>  <button class='input-group-text bg-danger text-white delete'>Remove</button></div>`);
+            }
+        }
+    }
+
+    function onSearch() {
+        var city = $('#searchBrewery').val();
+        getBreweries(city.trim());
+        getaddressLocation('', city);
+    }
+
 
     function onSearch(){
         var city = $('#searchBrewery').val();
@@ -101,24 +138,41 @@ $(document).ready(function () {
 
     $('#search').on('click', function () {
         onSearch();
+
     });
 
-   
+    // wishList();
 
-    $('.emptydiv').on("click", '#result', function(){
+
+
+    $('.emptydiv').on("click", '#result', function () {
         // var brewery = $(this).closest('#result').text();
         var addy = $(this).closest('.resultItem').find(".street").text();
         getaddressLocation(addy, city);
+    });
+
+    $('.listSlider').on('click', function () {
+        $('.emptydiv').html("");
+        var checked = $('input:checked');
+        if (checked.length === 0) {
+            getaddressLocation("", city);
+            getBreweries(city);
+        } else {
+            wishList();
+        }
+        $(document).on('click', '.delete', function (element) {
+            var br = $(this).closest("div.resultItem").find(".name").text();
+            console.log(br);
+            $(this).closest("div.resultItem").remove();
+            var arrayIndex = wishes.findIndex(x => x.brewery == br);
+            if (arrayIndex > -1) {
+                wishes.splice(arrayIndex, 1);
+                localStorage.setItem("wish", JSON.stringify(wishes));
+            }
+        });
+    });
 });
 
-$('.listSlider').on('click',function(){
-    $('.emptydiv').html("");
-    var checked = $('input:checked');
-    if(checked.length === 0){
-        getaddressLocation("", city);
-        getBreweries(city);
-    } else{
-        wishList();
-    } 
-});
-});
+
+    
+
