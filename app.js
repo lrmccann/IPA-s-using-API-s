@@ -57,6 +57,7 @@ $(document).ready(function () {
 
                 i++
 
+
             }
         });
     };
@@ -65,10 +66,12 @@ $(document).ready(function () {
 
         var queryURL = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + addy + ' ' + city + '.json?country=US&access_token=pk.eyJ1IjoiY2FybG9zcmVtYTIiLCJhIjoiY2s5em5zZjB2MGN2bTNncDYyM2Ruc2FyZSJ9.piNzfWJ9-dRIsVM3le57gg';
 
+
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
+
 
             mapboxgl.accessToken = 'pk.eyJ1IjoiY2FybG9zcmVtYTIiLCJhIjoiY2s5em5zZjB2MGN2bTNncDYyM2Ruc2FyZSJ9.piNzfWJ9-dRIsVM3le57gg';
 
@@ -119,6 +122,13 @@ $(document).ready(function () {
         getaddressLocation('', city);
     }
 
+
+    function onSearch(){
+        var city = $('#searchBrewery').val();
+            getBreweries(city.trim());
+            getaddressLocation('', city);
+    }
+
     $('#searchBrewery').keypress(function (e) {
         if (e.which == 13) {
             onSearch();
@@ -128,6 +138,7 @@ $(document).ready(function () {
 
     $('#search').on('click', function () {
         onSearch();
+
     });
 
     // wishList();
@@ -163,4 +174,5 @@ $(document).ready(function () {
 });
 
 
+    
 
