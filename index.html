@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' /> 
+    <link rel="stylesheet" href="assets/styles/normalize.css">
     <link rel="stylesheet" href="style.css">
 
     <title>Project 1</title>
@@ -28,7 +31,7 @@
             <div class="col-md-12">
               <h6 class="searchtext">Search for a city:</h6>
               <!--Buttons-->
-                <div class="input-group mb-3">
+                <div class="input-group mb-3 searchstuff">
                   <input type="text" class="form-control" placeholder="(ex. Chicago)" aria-label="City weather search" aria-describedby="button-addon2" id="searchBrewery">
                 <div class="input-group-append">
                   <button class="btn btn-primary" type="button" id="search">Search</button>
@@ -59,12 +62,7 @@
                 <div class="col-md-6">
                       <div id='map' style='width: 500px; height: 500px;'></div>
               </div>
-                </div>
             </div>
-          </div>
-        </div>
-      </div>
-
 
           <!-- Modal -->
           <div class="container">
@@ -88,12 +86,8 @@
             </div>
           </div>
           <!--End Modal content-->
-        </div>
-      </div>
       <!--FOOOOOTTERR-->
-              <div class="row">
-
-      <!--FOOOOOTTERR-->
+          <div class="row">
               <div class="row">
                 <div class="col-md-12">
           <footer class="page-footer font-small mdb-color lighten-3 pt-4 foot">
@@ -184,31 +178,9 @@
 
                   <!-- Social buttons -->
                   <h5 class="font-weight-bold text-uppercase mb-4">Follow Us</h5>
-
-                  <!-- Facebook -->
-                  <a type="button" class="btn-floating btn-fb">
-                    <i class="fab fa-facebook-f"></i>
-                  </a>
-                  <!-- Twitter -->
-                  <a type="button" class="btn-floating btn-tw">
-                    <i class="fab fa-twitter"></i>
-                  </a>
-                  <!-- Google +-->
-                  <a type="button" class="btn-floating btn-gplus">
-                    <i class="fab fa-google-plus-g"></i>
-                  </a>
-                  <!-- Dribbble -->
-                  <a type="button" class="btn-floating btn-dribbble">
-                    <i class="fab fa-dribbble"></i>
-                  </a>
-
-                </div>
-                <!-- Grid column -->
-
-              </div>
-              <!-- Grid row -->
-
-            </div>
+                  <div>
+                    
+                  </div>
             <!-- Footer Links -->
           </footer>
         </div>
@@ -219,10 +191,11 @@
     </html>
 
 
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js" integrity="sha256-H9jAz//QLkDOy/nzE9G4aYijQtkLt9FvGmdUTwBk6gs=" crossorigin="anonymous"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src='./app.js'></script>
   </body>
 </html> 
