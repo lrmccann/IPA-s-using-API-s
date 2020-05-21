@@ -23,6 +23,7 @@
     </header>
     <!-- End Header-->
 
+
     <!--Search Bar-->
     <div class="container searchbar">
         <div class="row-md-12">
@@ -32,6 +33,22 @@
                     <input type="text" class="form-control srcbox" placeholder="(ex. Chicago)" aria-label="City weather search" aria-describedby="button-addon2" id="searchBrewery">  
                     <button class="btn btn-primary" type="button" id="search">Search</button> 
                 </div>  
+
+  <div class="whole">
+      <div class ="container">
+        <div class="row">
+            <div class="col-md-12">
+              <h6 class="searchtext">Search for a city:</h6>
+              <!--Buttons-->
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control" placeholder="(ex. Chicago)" aria-label="City weather search" aria-describedby="button-addon2" id="searchBrewery">
+                <div class="input-group-append">
+                  <button class="btn btn-primary" type="button" id="search">Search</button>
+                </div> 
+              </div>  
+            </div>    
+   
+
             </div>
         </div>
       </div>
@@ -58,8 +75,20 @@
         <div class="container rsltcont">
             <div class='row'>
               <div class="col-md-6">
-                <div class="srcresults"><p class="resultstext">Results</p></div>
+                <div class="row">
+                  <div class="col-md-12 switcher">
+                      <label class="switch">
+                        <input type="checkbox" class="listSlider">
+                        <span class="slider"></span>
+                      </label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
                     <div class="emptydiv"></div>
+                  </div>
+                </div>
+                    
               </div>
                 <div class="col-md-6">
                     <div id='map' style='width: 500px; height: 500px;'></div>
@@ -91,6 +120,13 @@
             </div>
           </div>
           <!--End Modal content-->
+
+
+
+      <!--FOOOOOTTERR-->
+              <div class="row">
+                <div class="col-md-12">
+          <footer class="page-footer font-small mdb-color lighten-3 pt-4 foot">
 
 
 <!-- Footer -->
@@ -197,6 +233,13 @@
           <i class="fab fa-dribbble"></i>
         </a>
 
+
+
+            </div>
+            <!-- Footer Links -->
+          </footer>
+        </div>
+        </div>
       </div>
       <!-- Grid column -->
 
