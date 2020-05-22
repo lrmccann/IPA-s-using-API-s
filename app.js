@@ -51,9 +51,7 @@ $(document).ready(function () {
             while (i < response.length && i < 10) {
                 if (response[i].brewery_type === "planning") { i++; continue; };
                 $('.emptydiv').append(`<div class="resultItem" id="result" ><a href='#${response[i].name}'><div class = 'name ${i}'> ${response[i].name} </div></a> <div class = 'brewery_type'>   ${response[i].brewery_type}   </div> <div class = 'street'>  ${response[i].street} </div> <div class ="favoriteButton btn"> Add To Wish List</div></div>`);
-
                 i++
-
             }
         });
     };
@@ -62,10 +60,12 @@ $(document).ready(function () {
 
         var queryURL = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + addy + ' ' + city + '.json?country=US&access_token=pk.eyJ1IjoiY2FybG9zcmVtYTIiLCJhIjoiY2s5em5zZjB2MGN2bTNncDYyM2Ruc2FyZSJ9.piNzfWJ9-dRIsVM3le57gg';
 
+
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
+
 
             mapboxgl.accessToken = 'pk.eyJ1IjoiY2FybG9zcmVtYTIiLCJhIjoiY2s5em5zZjB2MGN2bTNncDYyM2Ruc2FyZSJ9.piNzfWJ9-dRIsVM3le57gg';
 
@@ -124,7 +124,7 @@ $(document).ready(function () {
         if (getWishes !== null) {
             wishes = getWishes;
             for (wish of wishes) {
-                $(".emptydiv").append(`<div class="resultItem" id="result"><a href ='#${wish.brewery}'class= "name"><div>${wish.brewery}</div></a><div class = 'brewery_city'>${wish.myCity}</div><div class = 'street'>${wish.address}</div> <button class='input-group-text bg-danger text-white delete'>Remove</button></div>`);
+                $(".emptydiv").append(`<div class="resultItem" id="result"><a href ='#${wish.brewery}'class= "name"><div>${wish.brewery}</div></a><div class = 'brewery_city'>${wish.myCity}</div><div class = 'street'>${wish.address}</div> <button class='input-group-text delete'>Remove</button></div>`);
             }
         }
     }
@@ -159,4 +159,5 @@ $(document).ready(function () {
 });
 
 
+    
 
