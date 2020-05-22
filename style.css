@@ -143,19 +143,20 @@
 }
 
 .slider:hover:before{
-	background-color: rgb(143, 89, 18);
+	background-color: rgb(48, 48, 48);
 }
 
 .slider:focus{
-	background-color: rgb(143, 89, 18);
+	background-color: rgb(48, 48, 48);
 }
 
 input:checked + .slider {
-  background-color: rgb(172, 130, 76);
+  background-color: #F7F6E2;
 }
 
 input:checked + .slider:before {
-  background-color: burlywood;
+  background-color: black;
+  color: white;
   content: "Wish List";
   -webkit-transform: translateX(96%);
   -ms-transform: translateX(96%);
@@ -163,7 +164,7 @@ input:checked + .slider:before {
 }
 
 input:checked + .slider:hover:before{
-	background-color: rgb(143, 89, 18);
+	background-color: rgb(48, 48, 48);
 }
 
 
