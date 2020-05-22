@@ -102,15 +102,20 @@ $(document).ready(function () {
 
     $(document).on("click", '.favoriteButton', function () {
         var getWishes = JSON.parse(localStorage.getItem("wish"));
-        wishes = getWishes;
+        if (getWishes !== null) {
+            wishes = getWishes;
+        }
         var previousElements = $(this).prevAll();
         var saveCity = city;
         var wish = $(previousElements[2]).children().first().text();
         var addy = previousElements[0].innerText;
-        var arrayIndex = wishes.findIndex(x => x.brewery == wish.trim());
-        if (arrayIndex > -1) {
-            return;
+        if(wishes !== null){
+            var arrayIndex = wishes.findIndex(x => x.brewery == wish.trim());
+            if (arrayIndex > -1) {
+                return;
+            }
         }
+
         wishes.push({
             myCity: saveCity,
             address: addy,
