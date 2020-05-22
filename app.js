@@ -50,7 +50,7 @@ $(document).ready(function () {
             var i = 0;
             while (i < response.length && i < 10) {
                 if (response[i].brewery_type === "planning") { i++; continue; };
-                $('.emptydiv').append(`<div class="resultItem" id="result" ><a href='#${response[i].name}'><div class = 'name ${i}'> ${response[i].name} </div></a> <div class = 'brewery_type'>   ${response[i].brewery_type}   </div> <div class = 'street'>  ${response[i].street} </div> <div class = "favoriteButton btn btn-primary"> Add To Wish List</div></div>`);
+                $('.emptydiv').append(`<div class="resultItem" id="result" ><a href='#${response[i].name}'><div class = 'name ${i}'> ${response[i].name} </div></a> <div class = 'brewery_type'>   ${response[i].brewery_type}   </div> <div class = 'street'>  ${response[i].street} </div> <div class ="favoriteButton btn"> Add To Wish List</div></div>`);
 
                 i++
 
