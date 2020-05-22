@@ -56,6 +56,7 @@
 	 margin-bottom: 10%;
 	 color: white;
 	 background-color: black;
+	 border: black;
  }
  #search:hover{
 	background-color: rgb(48, 48, 48);
@@ -97,7 +98,7 @@
 
  /* Unit measure switch formatting is next 7 formatting sections*/
 .switch {
-  height: 33px;
+  height: 36px;
 }
 
 /* Hide default HTML checkbox */
@@ -112,18 +113,18 @@
   position: absolute;
   cursor: pointer;
   text-align: center;
+  margin: 4px 15px;
   font-size: 20px;
-  width: 55%;
   color: white;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgb(172, 130, 76);
+  background-color: #F7F6E2;
+  box-shadow: inset 0 0 10px rgb(168, 168, 168);
   -webkit-transition: .7s;
   transition: .7s;
   border-radius: 5px;
-  margin-left: 11%;
 }
 
 .slider:before {
@@ -134,10 +135,8 @@
   width: 50%;
   left: 4px;
   bottom: 3px;
-  background-color: burlywood;
-  border-color: black;
-  border-style: solid;
-  border-width: 2px;
+  background-color: black;
+  color: white;
   -webkit-transition: .7s;
   transition: .7s;
   border-radius: 5px;
@@ -167,18 +166,14 @@ input:checked + .slider:hover:before{
 	background-color: rgb(143, 89, 18);
 }
 
- .results{
- 	margin-top: 20px;
- 	height: 100px;
- 	width: 100%;
- }
+
 
  .emptydiv{
+	 margin: 0 auto;
  border: dashed black 3px;
- padding: 3%;
  float: left;
+ width: 100%;
  height: auto;
- width: 500px;
  }
 
  .name{
@@ -201,14 +196,6 @@ input:checked + .slider:hover:before{
  	font-size: 25px;
  	color: black;
  	font-weight: 500;
- }
-
- .bar{
-	 width: 1000px;
- }
-
- .groupbtn{
- 	margin-right: 10px;
  }
 
  .foot{
