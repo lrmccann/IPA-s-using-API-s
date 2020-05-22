@@ -1,9 +1,6 @@
 $(document).ready(function () {
     getGeolocation();
-    var coords = []
     var city = '';
-
-    console.log(coords);
     function getGeolocation() {
         $.ajax({
             "async": true,
@@ -48,19 +45,19 @@ $(document).ready(function () {
             console.log(response);
 
             if (response.length === 0) {
-                $("#myModal").modal();
+                $("#myModal").modal('show');
             }
             var i = 0;
             while (i < response.length && i < 10) {
                 if (response[i].brewery_type === "planning") { i++; continue; };
-                $('.emptydiv').append(`<div class="resultItem" id="result" ><a href='#${response[i].name}' id='${response[i].name}' ><div class = 'name ${i}'> ${response[i].name} </div></a> <div class = 'brewery_type'>   ${response[i].brewery_type}   </div> <div class = 'street'>  ${response[i].street} </div> <div class = "favoriteButton btn btn-primary"> Add To Wish List</div></div>`);
+                $('.emptydiv').append(`<div class="resultItem" id="result" ><a href='#${response[i].name}'><div class = 'name ${i}'> ${response[i].name} </div></a> <div class = 'brewery_type'>   ${response[i].brewery_type}   </div> <div class = 'street'>  ${response[i].street} </div> <div class = "favoriteButton btn btn-primary"> Add To Wish List</div></div>`);
 
                 i++
 
             }
         });
     };
-
+  
     function getaddressLocation(addy, city) {
 
         var queryURL = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + addy + ' ' + city + '.json?country=US&access_token=pk.eyJ1IjoiY2FybG9zcmVtYTIiLCJhIjoiY2s5em5zZjB2MGN2bTNncDYyM2Ruc2FyZSJ9.piNzfWJ9-dRIsVM3le57gg';
@@ -85,12 +82,31 @@ $(document).ready(function () {
                 .addTo(map);
         });
     };
+
+    function onSearch() {
+     city = $('#searchBrewery').val();
+        getBreweries(city.trim());
+        getaddressLocation('', city);
+    }
+
+    $('#search').on('click', function () {
+        onSearch();
+    });
+
+    $('#searchBrewery').keypress(function (e) {
+        if (e.which == 13) {
+            onSearch();
+            return false;
+        };
+    });
+
     var wishes = [];
 
     $(document).on("click", '.favoriteButton', function () {
         var previousElements = $(this).prevAll();
         console.log(previousElements);
         var saveCity = city;
+        console.log(saveCity);
         var wish = $(previousElements[2]).children().first().text();
         var addy = previousElements[0].innerText;
         wishes.push({
@@ -108,31 +124,10 @@ $(document).ready(function () {
         if (getWishes !== null) {
             wishes = getWishes;
             for (wish of wishes) {
-                $(".emptydiv").append(`<div class="resultItem" id="result" ><a href ='#${wish.brewery}'class= "name" id='${wish.brewery}'><div>${wish.brewery}</div></a><div class = 'brewery_city'>${wish.myCity}</div><div class = 'street'>${wish.address}</div>  <button class='input-group-text bg-danger text-white delete'>Remove</button></div>`);
+                $(".emptydiv").append(`<div class="resultItem" id="result"><a href ='#${wish.brewery}'class= "name"><div>${wish.brewery}</div></a><div class = 'brewery_city'>${wish.myCity}</div><div class = 'street'>${wish.address}</div> <button class='input-group-text bg-danger text-white delete'>Remove</button></div>`);
             }
         }
     }
-
-    function onSearch() {
-        var city = $('#searchBrewery').val();
-        getBreweries(city.trim());
-        getaddressLocation('', city);
-    }
-
-    $('#searchBrewery').keypress(function (e) {
-        if (e.which == 13) {
-            onSearch();
-            return false;
-        };
-    });
-
-    $('#search').on('click', function () {
-        onSearch();
-    });
-
-    // wishList();
-
-
 
     $('.emptydiv').on("click", '#result', function () {
         // var brewery = $(this).closest('#result').text();
@@ -148,6 +143,7 @@ $(document).ready(function () {
             getBreweries(city);
         } else {
             wishList();
+           
         }
         $(document).on('click', '.delete', function (element) {
             var br = $(this).closest("div.resultItem").find(".name").text();
