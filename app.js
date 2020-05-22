@@ -50,22 +50,8 @@ $(document).ready(function () {
             var i = 0;
             while (i < response.length && i < 10) {
                 if (response[i].brewery_type === "planning") { i++; continue; };
-
-
-                $('.emptydiv').append(`<div><a href='#${response[i].name}' id='${response[i].name}' ><div class = 'name ${i}'> ${response[i].name} </div></a> <div class = 'brewery_type'>   ${response[i].brewery_type}   </div> <div class = 'street'>  ${response[i].street} </div> <div class = "favoriteButton btn"> Add To Wish List</div></div>`);
-
-                var newCoord = {
-                    lat: response[i].latitude,
-                    lon: response[i].longitude,
-                    address: response[i].street
-                }
-                coords.push(newCoord);
-
-                $('.emptydiv').append(`<div class="resultItem" id="result" ><a href='#${response[i].name}' id='${response[i].name}' ><div class = 'name ${i}'> ${response[i].name} </div></a> <div class = 'brewery_type'>   ${response[i].brewery_type}   </div> <div class = 'street'>  ${response[i].street} </div> <div class = "favoriteButton btn btn-primary"> Add To Wish List</div></div>`);
-
+                $('.emptydiv').append(`<div class="resultItem" id="result" ><a href='#${response[i].name}'><div class = 'name ${i}'> ${response[i].name} </div></a> <div class = 'brewery_type'>   ${response[i].brewery_type}   </div> <div class = 'street'>  ${response[i].street} </div> <div class ="favoriteButton btn"> Add To Wish List</div></div>`);
                 i++
-
-
             }
         });
     };
@@ -138,41 +124,10 @@ $(document).ready(function () {
         if (getWishes !== null) {
             wishes = getWishes;
             for (wish of wishes) {
-                $(".emptydiv").append(`<div class="resultItem" id="result"><a href ='#${wish.brewery}'class= "name"><div>${wish.brewery}</div></a><div class = 'brewery_city'>${wish.myCity}</div><div class = 'street'>${wish.address}</div> <button class='input-group-text bg-danger text-white delete'>Remove</button></div>`);
+                $(".emptydiv").append(`<div class="resultItem" id="result"><a href ='#${wish.brewery}'class= "name"><div>${wish.brewery}</div></a><div class = 'brewery_city'>${wish.myCity}</div><div class = 'street'>${wish.address}</div> <button class='input-group-text delete'>Remove</button></div>`);
             }
         }
     }
-
-
-    function onSearch() {
-        var city = $('#searchBrewery').val();
-        getBreweries(city.trim());
-        getaddressLocation('', city);
-    }
-
-
-    function onSearch(){
-        var city = $('#searchBrewery').val();
-            getBreweries(city.trim());
-            getaddressLocation('', city);
-    }
-
-    $('#searchBrewery').keypress(function (e) {
-        if (e.which == 13) {
-            onSearch();
-            return false;
-        };
-    });
-
-    $('#search').on('click', function () {
-        onSearch();
-
-    });
-
-    // wishList();
-
-
-
 
     $('.emptydiv').on("click", '#result', function () {
         // var brewery = $(this).closest('#result').text();
