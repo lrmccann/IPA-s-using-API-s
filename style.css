@@ -1,0 +1,223 @@
+*{padding: 0; margin: 0;}
+ body{
+     height: 100%;
+ 	background-color: #F7F6E2;
+
+ }
+ header {
+ 	text-align: center;
+ 	width: 100%;
+ 	height: auto;
+ 	background-size: cover;
+ 	background-attachment: fixed;
+ 	position: relative;
+	 overflow: hidden;
+    border-radius: 0 0 85% 85% / 30%;
+    margin-bottom: 50px;
+ }
+
+ header .overlay{
+ 	width: 100%;
+ 	height: 100%;
+ 	color: #FFF;
+	 text-shadow: 1px 1px 1px #333;
+
+ }
+
+ h1 {
+ 	font-family: sans-serif;
+ 	font-size: 80px;
+ 	margin-bottom: 30px;
+ }
+
+ h3, p {
+ 	font-family: sans-serif;
+ 	margin-bottom: 30px;
+ }
+
+
+ #map{
+	margin: 0 auto;
+     width: 100%;
+     height: 100vh;
+     max-height: 500px;
+	 max-width: 500px;
+	 border: black solid 1px;
+	 margin-top: 7.5%;
+ }
+
+ #searchBrewey{
+	 float:left;
+ }
+
+ #search{
+ 	font-size: medium;
+	 float: left;
+	 margin-bottom: 10%;
+	 color: white;
+	 background-color: black;
+ }
+ #search:hover{
+	background-color: rgb(48, 48, 48);
+	color: white;
+ }
+ 
+ .image{
+     width: 100%;
+     height: 550px;
+     background-size: cover;
+     overflow: hidden;
+     border-radius: 0 0 85% 85% / 30%;
+ 	margin-bottom: 50px;
+ 	display: inline-block;  
+ 	z-index: 999;
+ }
+
+ .headertext{
+ 	color: white;
+ 	position: absolute;
+ 	top: 50%;
+ 	left: 50%;
+ 	transform: translate(-50%, -50%);
+	}
+	 
+.favoriteButton, .delete{
+	background-color: rgb(0, 0, 0);
+	color: white;
+}
+.favoriteButton:hover, .delete:hover{
+	background-color: rgb(48, 48, 48);
+	color: white;
+}
+
+
+ .searchtext{
+	 font-size: 25px;
+ }
+
+ /* Unit measure switch formatting is next 7 formatting sections*/
+.switch {
+  height: 33px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  text-align: center;
+  font-size: 20px;
+  width: 55%;
+  color: white;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(172, 130, 76);
+  -webkit-transition: .7s;
+  transition: .7s;
+  border-radius: 5px;
+  margin-left: 11%;
+}
+
+.slider:before {
+  position: absolute;
+  content: "Results";
+  padding-bottom: 30px;
+  height: 28px;
+  width: 50%;
+  left: 4px;
+  bottom: 3px;
+  background-color: burlywood;
+  border-color: black;
+  border-style: solid;
+  border-width: 2px;
+  -webkit-transition: .7s;
+  transition: .7s;
+  border-radius: 5px;
+}
+
+.slider:hover:before{
+	background-color: rgb(143, 89, 18);
+}
+
+.slider:focus{
+	background-color: rgb(143, 89, 18);
+}
+
+input:checked + .slider {
+  background-color: rgb(172, 130, 76);
+}
+
+input:checked + .slider:before {
+  background-color: burlywood;
+  content: "Wish List";
+  -webkit-transform: translateX(96%);
+  -ms-transform: translateX(96%);
+  transform: translateX(96%);
+}
+
+input:checked + .slider:hover:before{
+	background-color: rgb(143, 89, 18);
+}
+
+ .results{
+ 	margin-top: 20px;
+ 	height: 100px;
+ 	width: 100%;
+ }
+
+ .emptydiv{
+ border: dashed black 3px;
+ padding: 3%;
+ float: left;
+ height: auto;
+ width: 500px;
+ }
+
+ .name{
+	 font-size: 20px;
+	 color: black;
+	 font-weight: bolder;
+ }
+
+ .brewery_type{
+	 font-size: 15px;
+	 color: black; 
+ }
+
+ .street{
+	 font-size: 15px;
+	 color: black;
+ }
+
+ .resultstext{
+ 	font-size: 25px;
+ 	color: black;
+ 	font-weight: 500;
+ }
+
+ .bar{
+	 width: 1000px;
+ }
+
+ .groupbtn{
+ 	margin-right: 10px;
+ }
+
+ .foot{
+ 	border: solid black 5px;
+ 	margin-top: 20%;
+ 	font-family: sans-serif;
+ 	font-size: 14px;
+ 	float: left;
+ 	background-color: #F7F6E2;
+ 	width: 100%;
+ 	height: auto;
+ }
