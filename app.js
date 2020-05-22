@@ -27,7 +27,7 @@ $(document).ready(function () {
                 center: [response.longitude, response.latitude], // starting position
                 zoom: 9 // starting zoom
             });
-            // Add zoom and rotation controls to the map.
+
             map.addControl(new mapboxgl.NavigationControl());
         });
     };
@@ -53,6 +53,7 @@ $(document).ready(function () {
             var i = 0;
             while (i < response.length && i < 10) {
                 if (response[i].brewery_type === "planning") { i++; continue; };
+<<<<<<< HEAD
                 $('.emptydiv').append(`<div><a href='#${response[i].name}' id='${response[i].name}' ><div class = 'name ${i}'> ${response[i].name} </div></a> <div class = 'brewery_type'>   ${response[i].brewery_type}   </div> <div class = 'street'>  ${response[i].street} </div> <div class = "favoriteButton btn"> Add To Wish List</div></div>`);
 
                 var newCoord = {
@@ -61,11 +62,43 @@ $(document).ready(function () {
                     address: response[i].street
                 }
                 coords.push(newCoord);
+=======
+                $('.emptydiv').append(`<div class="resultItem" id="result" ><a href='#${response[i].name}' id='${response[i].name}' ><div class = 'name ${i}'> ${response[i].name} </div></a> <div class = 'brewery_type'>   ${response[i].brewery_type}   </div> <div class = 'street'>  ${response[i].street} </div> <div class = "favoriteButton btn btn-primary"> Add To Wish List</div></div>`);
+
+>>>>>>> master
                 i++
+
+
             }
         });
     };
 
+    function getaddressLocation(addy, city) {
+
+        var queryURL = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + addy + ' ' + city + '.json?country=US&access_token=pk.eyJ1IjoiY2FybG9zcmVtYTIiLCJhIjoiY2s5em5zZjB2MGN2bTNncDYyM2Ruc2FyZSJ9.piNzfWJ9-dRIsVM3le57gg';
+
+
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+
+
+            mapboxgl.accessToken = 'pk.eyJ1IjoiY2FybG9zcmVtYTIiLCJhIjoiY2s5em5zZjB2MGN2bTNncDYyM2Ruc2FyZSJ9.piNzfWJ9-dRIsVM3le57gg';
+
+            var map = new mapboxgl.Map({
+                container: 'map', // container id
+                style: 'mapbox://styles/mapbox/streets-v11',
+                center: [response.features[0].center[0], response.features[0].center[1]], // starting position
+                zoom: 15 // starting zoom
+            });
+            // Add zoom and rotation controls to the map.
+            map.addControl(new mapboxgl.NavigationControl());
+            var marker = new mapboxgl.Marker()
+                .setLngLat([response.features[0].center[0], response.features[0].center[1]])
+                .addTo(map);
+        });
+    };
     var wishes = [];
 
     $(document).on("click", '.favoriteButton', function () {
@@ -89,38 +122,22 @@ $(document).ready(function () {
         if (getWishes !== null) {
             wishes = getWishes;
             for (wish of wishes) {
-                $(".emptydiv2").append(`<a href ='#${wish.brewery}' id='${wish.brewery}'><div> ${wish.brewery} </div></a><div class = 'brewery_city'>   ${wish.myCity}   </div>`);
+                $(".emptydiv").append(`<div class="resultItem" id="result" ><a href ='#${wish.brewery}'class= "name" id='${wish.brewery}'><div>${wish.brewery}</div></a><div class = 'brewery_city'>${wish.myCity}</div><div class = 'street'>${wish.address}</div>  <button class='input-group-text bg-danger text-white delete'>Remove</button></div>`);
             }
         }
     }
-    
-    function getaddressLocation(nameBrewery, city) {
-        console.log(nameBrewery);
-        var queryURL = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + nameBrewery + '.json?proximity=-87.65,41.85&access_token=pk.eyJ1IjoiY2FybG9zcmVtYTIiLCJhIjoiY2s5em5zZjB2MGN2bTNncDYyM2Ruc2FyZSJ9.piNzfWJ9-dRIsVM3le57gg';
 
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        }).then(function (response) {
-            //console.log(response);
+    function onSearch() {
+        var city = $('#searchBrewery').val();
+        getBreweries(city.trim());
+        getaddressLocation('', city);
+    }
 
-            $('body').append('<div>' + response.features[0].geometry.coordinates[0] + '</div>' + '  <div>' + response.features[0].geometry.coordinates[1] + '   </div>');
-            mapboxgl.accessToken = 'pk.eyJ1IjoiY2FybG9zcmVtYTIiLCJhIjoiY2s5em5zZjB2MGN2bTNncDYyM2Ruc2FyZSJ9.piNzfWJ9-dRIsVM3le57gg';
-
-            var map = new mapboxgl.Map({
-                container: 'map', // container id
-                style: 'mapbox://styles/mapbox/streets-v11',
-                center: [response.features[0].geometry.coordinates[0], response.features[0].geometry.coordinates[1]], // starting position
-                zoom: 13 // starting zoom
-            });
-            // Add zoom and rotation controls to the map.
-            map.addControl(new mapboxgl.NavigationControl());
-        });
-    };
 
     function onSearch(){
         var city = $('#searchBrewery').val();
             getBreweries(city.trim());
+            getaddressLocation('', city);
     }
 
     $('#searchBrewery').keypress(function (e) {
@@ -132,24 +149,41 @@ $(document).ready(function () {
 
     $('#search').on('click', function () {
         onSearch();
+
     });
 
-    wishList();
+    // wishList();
 
-    $('.emptydiv').on("click", '#result', function(){
+
+
+    $('.emptydiv').on("click", '#result', function () {
         // var brewery = $(this).closest('#result').text();
-        var addy = $(this).closest('.resultItem').find("div[id='addy'").text();
+        var addy = $(this).closest('.resultItem').find(".street").text();
         getaddressLocation(addy, city);
+    });
+
+    $('.listSlider').on('click', function () {
+        $('.emptydiv').html("");
+        var checked = $('input:checked');
+        if (checked.length === 0) {
+            getaddressLocation("", city);
+            getBreweries(city);
+        } else {
+            wishList();
+        }
+        $(document).on('click', '.delete', function (element) {
+            var br = $(this).closest("div.resultItem").find(".name").text();
+            console.log(br);
+            $(this).closest("div.resultItem").remove();
+            var arrayIndex = wishes.findIndex(x => x.brewery == br);
+            if (arrayIndex > -1) {
+                wishes.splice(arrayIndex, 1);
+                localStorage.setItem("wish", JSON.stringify(wishes));
+            }
+        });
+    });
 });
 
-$('.listSlider').on('click',function(){
-    $('.emptydiv').html("");
-    var checked = $('input:checked');
-    if(checked.length === 0){
-        getaddressLocation("", city);
-        getBreweries(city);
-    } else{
-        wishList();
-    } 
-});
-});
+
+    
+
