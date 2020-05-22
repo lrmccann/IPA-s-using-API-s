@@ -57,15 +57,12 @@ $(document).ready(function () {
     };
   
     function getaddressLocation(addy, city) {
-
         var queryURL = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + addy + ' ' + city + '.json?country=US&access_token=pk.eyJ1IjoiY2FybG9zcmVtYTIiLCJhIjoiY2s5em5zZjB2MGN2bTNncDYyM2Ruc2FyZSJ9.piNzfWJ9-dRIsVM3le57gg';
-
 
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-
 
             mapboxgl.accessToken = 'pk.eyJ1IjoiY2FybG9zcmVtYTIiLCJhIjoiY2s5em5zZjB2MGN2bTNncDYyM2Ruc2FyZSJ9.piNzfWJ9-dRIsVM3le57gg';
 
@@ -85,6 +82,7 @@ $(document).ready(function () {
 
     function onSearch() {
      city = $('#searchBrewery').val();
+     $('.listSlider').prop("checked", false);
         getBreweries(city.trim());
         getaddressLocation('', city);
     }
@@ -103,20 +101,25 @@ $(document).ready(function () {
     var wishes = [];
 
     $(document).on("click", '.favoriteButton', function () {
+        var getWishes = JSON.parse(localStorage.getItem("wish"));
+        wishes = getWishes;
         var previousElements = $(this).prevAll();
-        console.log(previousElements);
         var saveCity = city;
-        console.log(saveCity);
         var wish = $(previousElements[2]).children().first().text();
         var addy = previousElements[0].innerText;
+        var arrayIndex = wishes.findIndex(x => x.brewery == wish.trim());
+        if (arrayIndex > -1) {
+            return;
+        }
         wishes.push({
             myCity: saveCity,
             address: addy,
-            brewery: wish
+            brewery: wish.trim()
         })
         localStorage.setItem('wish', JSON.stringify(wishes));
-        console.log(wishes);
+
     });
+
     var wishList = function () {
         console.log('wishList');
         var getWishes = JSON.parse(localStorage.getItem("wish"));
@@ -145,7 +148,8 @@ $(document).ready(function () {
             wishList();
            
         }
-        $(document).on('click', '.delete', function (element) {
+
+    $(document).on('click', '.delete', function (element) {
             var br = $(this).closest("div.resultItem").find(".name").text();
             console.log(br);
             $(this).closest("div.resultItem").remove();
