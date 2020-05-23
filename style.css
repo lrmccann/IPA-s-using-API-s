@@ -13,7 +13,7 @@
  	position: relative;
 	 overflow: hidden;
     border-radius: 0 0 85% 85% / 30%;
-	margin-bottom: 8%;
+	margin-bottom: 5%;
  }
 
  header .overlay{
@@ -48,6 +48,7 @@
 	 max-width: 500px;
 	 border: black dashed 3px;
 	 margin-top: 7.5%;
+	 margin-left: 15%;
  }
 
  #searchBrewey{
@@ -80,11 +81,11 @@
 
  .headertext{
  	color: white;
-	 position: absolute;
-	 font-weight: bolder;
+	position: absolute;
+	font-weight: bolder;
  	top: 50%;
  	left: 50%;
- 	transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
 	}
 	 
 .favoriteButton, .delete{
@@ -99,6 +100,8 @@
 
  .searchtext{
 	 font-size: 25px;
+	 margin-bottom: 2%;
+	 font-weight: bolder;
  }
 
  /* Unit measure switch formatting is next 7 formatting sections*/
@@ -179,11 +182,12 @@ input:checked + .slider:hover:before{
  	border: dashed black 3px;
  	float: left;
  	width: 100%;
-	 height: auto;
+	height: auto;
+	padding:10px;
  }
 
  .name{
-	 font-size: 20px;
+	 font-size: 25px;
 	 color: black;
 	 font-weight: bolder;
  }
@@ -214,15 +218,30 @@ input:checked + .slider:hover:before{
  	width: 100%;
  	height: auto;
  }
- .one{
-	 margin-bottom: 12%;
+
+ .geo{
+	margin-bottom: 15%;
  }
- .two{
+ .brew{
+	margin-bottom: 15%;
+ }
+ .mapbox{
+	margin-bottom: 15%;
+ }
+
+ .Alex{
+	 margin-bottom: 12%;
+	 list-style-type: none;
+ }
+ .Carlos{
 	margin-bottom: 12%;
+	list-style-type: none;
 }
-.three{
+.Mar{
 	margin-bottom: 12%;
+	list-style-type: none;
 }
-.four{
+.Logan{
 	margin-bottom: 12%;
+	list-style-type: none;
 }
