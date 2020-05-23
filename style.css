@@ -1,38 +1,29 @@
 *{padding: 0; margin: 0;}
  body{
      height: 100%;
- 	background-color: #F7F6E2;
 
  }
  header {
- 	text-align: center;
- 	width: 100%;
- 	height: auto;
- 	background-size: cover;
- 	background-attachment: fixed;
- 	position: relative;
-	 overflow: hidden;
-    border-radius: 0 0 85% 85% / 30%;
-	margin-bottom: 5%;
+		background-image: url("./image.jpeg");
+		background-size: cover;
+		background-position: 0 67%;
+		background-repeat: no-repeat;
+		width: 100%;
+		height: 270px;
+		margin-bottom: 30px;
+ 		text-align: center;
+ 		position: relative;
+	 	overflow: hidden;
+    	border-radius: 0 0 85% 85% / 30%;
  }
 
- header .overlay{
- 	width: 100%;
- 	height: 100%;
- 	color: #FFF;
-	text-shadow: 1px 1px 1px #333;
+ .title{
+	 text-align: center;
+	 font-size: 38px;
+	 font-weight: bolder;
  }
 
- h1 {
- 	font-family: sans-serif;
- 	font-size: 80px;
- 	margin-bottom: 30px;
- }
 
- h3, p {
- 	font-family: sans-serif;
- 	margin-bottom: 30px;
- }
  .line{
 	 border: solid black 1px;
 	 margin-bottom: 1%;
@@ -128,7 +119,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #F7F6E2;
+  background-color: white;
   box-shadow: inset 0 0 10px rgb(168, 168, 168);
   -webkit-transition: .7s;
   transition: .7s;
@@ -159,7 +150,7 @@
 }
 
 input:checked + .slider {
-  background-color: #F7F6E2;
+  background-color: white;
 }
 
 input:checked + .slider:before {
@@ -186,6 +177,16 @@ input:checked + .slider:hover:before{
 	padding:10px;
  }
 
+ .page-link{
+	color: white;
+	background-color: black;
+  }
+ 
+  .page-link:hover{
+   background-color: rgb(82, 82, 82);
+   color: white;
+  }
+
  .name{
 	 font-size: 25px;
 	 color: black;
@@ -210,11 +211,11 @@ input:checked + .slider:hover:before{
 
  .foot{
  	border: solid black 5px;
- 	margin-top: 20%;
+ 	margin-top: 10%;
  	font-family: sans-serif;
  	font-size: 14px;
  	float: left;
- 	background-color: #F7F6E2;
+ 	background-color: white;
  	width: 100%;
  	height: auto;
  }
