@@ -175,8 +175,6 @@ input:checked + .slider:hover:before{
 	background-color: rgb(48, 48, 48);
 }
 
-
-
  .emptydiv{
 	margin: 0 auto;
  	border: dashed black 3px;
@@ -245,3 +243,4 @@ input:checked + .slider:hover:before{
 	margin-bottom: 12%;
 	list-style-type: none;
 }
+.
