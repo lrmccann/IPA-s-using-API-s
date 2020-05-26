@@ -13,7 +13,6 @@ $(document).ready(function () {
                 "x-rapidapi-key": "4160692450msh57c7f939866117fp13f0ccjsn2faf3ca7bcb3"
             }
         }).then(function (response) {
-            //console.log(response);
             var type = [];
             city = response.city;
             getBreweries(response.city, type);
@@ -35,7 +34,7 @@ $(document).ready(function () {
     function getBreweries(city) {
         breweries = [];
         currentPage = 1;
-        console.log(city);
+
         var queryURL = 'https://api.openbrewerydb.org/breweries?by_city=' + city;
         $.ajax({
             url: queryURL,
@@ -43,8 +42,6 @@ $(document).ready(function () {
         }).then(function (response) {
             $('.emptydiv').empty();
             $('.page').empty();
-
-            console.log(response);
 
             if (response.length === 0) {
                 $("#myModal").modal('show');
@@ -146,6 +143,7 @@ $(document).ready(function () {
 
     function onSearch() {
      city = $('#searchBrewery').val();
+     $('#searchBrewery').val("");
      $('.listSlider').prop("checked", false);
      currentPage = 1;
         getBreweries(city.trim());
@@ -191,7 +189,6 @@ $(document).ready(function () {
     });
 
     var wishList = function () {
-        console.log('wishList');
         var getWishes = JSON.parse(localStorage.getItem("wish"));
 
         if (getWishes !== null) {
@@ -222,7 +219,7 @@ $(document).ready(function () {
 
     $(document).on('click', '.delete', function (element) {
             var br = $(this).closest("div.resultItem").find(".name").text();
-            console.log(br);
+
             $(this).closest("div.resultItem").remove();
             var arrayIndex = wishes.findIndex(x => x.brewery == br);
             if (arrayIndex > -1) {
