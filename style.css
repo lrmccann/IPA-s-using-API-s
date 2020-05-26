@@ -166,8 +166,6 @@ input:checked + .slider:hover:before{
 	background-color: rgb(48, 48, 48);
 }
 
-
-
  .emptydiv{
  	border: solid black 3px;
 	float: left;
@@ -244,5 +242,8 @@ input:checked + .slider:hover:before{
 }
 .Logan{
 	list-style-type: none;
+}
+
 	margin-bottom: 12%;
 }
+
