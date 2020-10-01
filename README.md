@@ -1,2 +1,1 @@
-# project-1
-Project 1 - Team Project
+Collaborating with a team of three, we created a simple application using HTML, CSS, Javascript, and third party API’s. We set out to create a sleek, user friendly, way to search local IPA friendly places in your city. Grabbing a quick drink has never been as crucial for a person’s sanity as it is right now!
