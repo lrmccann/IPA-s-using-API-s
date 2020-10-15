@@ -32,7 +32,7 @@ quick link: https://lrmccann.github.io/IPA-s-using-API-s/
 - Logan McCann
 - Alex Curtis
 - Carlos Reyes
--Mariya Kiriche
+- Mariya Kiriche
 
 ---
 
