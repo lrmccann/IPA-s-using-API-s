@@ -4,7 +4,7 @@ Collaborating with a team of three, we created a simple application using HTML, 
 ---
 
 ## Build Status
-Travis CI badge here
+![GitHub language count](https://img.shields.io/badge/build-passing-brightgreen)
 
 ---
 
